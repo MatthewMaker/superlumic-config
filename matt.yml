@@ -10,6 +10,7 @@
         - dropbox
         - google-chrome
         - iterm2-beta
+        - jenkins-lts
     - name: create ssh directory
       become: yes
       file:
