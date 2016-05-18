@@ -5,6 +5,6 @@
   with_items:
     - slack
     - google-drive
-    - vlc
-    - keepingyouawake
+#    - vlc
+#    - keepingyouawake
 
