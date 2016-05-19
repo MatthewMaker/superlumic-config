@@ -5,12 +5,13 @@
 
   tasks:
     - name: install personal cask applications
+      homebrew_tap: tap=homebrew/versions state=present
       homebrew_cask: name={{item}} state=present
       with_items:
         - dropbox
         - google-chrome
         - iterm2-beta
-        - homebrew/versions/jenkins-lts
+        - jenkins-lts
     - name: create ssh directory
       become: yes
       file:
