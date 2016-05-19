@@ -59,7 +59,7 @@
         state=present
         create=true
       with_items:
-        - { regexp: '^buildbot', line: buildbot ALL=(ALL) NOPASSWD: ALL' }
+        - { regexp: '^buildbot', line: 'buildbot ALL=(ALL) NOPASSWD: ALL' }
 
   roles:
     - profile-all
