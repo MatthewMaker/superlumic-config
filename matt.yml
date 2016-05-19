@@ -4,15 +4,25 @@
   connection: local
 
   tasks:
+    - name: create buildbot user
+# Create a 2048-bit SSH key for user buildbot in ~jsmith/.ssh/id_rsa
+      user: name=buildbot generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa createhome=yes comment="jenkins user" state=present
     - name: tap for alternate version of jenkins
       homebrew_tap: tap=homebrew/versions state=present
+      become: yes
+      become_user: buildbot
     - name: alternate version of jenkins
       homebrew: name=jenkins-lts state=present
+      become: yes
+      become_user: buildbot
     - name: tap for brew services command to start jenkins-lts
       homebrew_tap: tap=homebrew/services state=present
-    - name: restart jenkins-lts
       become: yes
+      become_user: buildbot
+    - name: restart jenkins-lts
       command: brew services restart jenkins-lts
+      become: yes
+      become_user: buildbot
       changed_when: False
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
@@ -49,7 +59,7 @@
         state=present
         create=true
       with_items:
-        - { regexp: '^matt', line: 'matt ALL=(ALL) NOPASSWD: ALL' }
+        - { regexp: '^buildbot', line: buildbot ALL=(ALL) NOPASSWD: ALL' }
 
   roles:
     - profile-all
