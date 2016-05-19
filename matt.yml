@@ -13,6 +13,7 @@
     - name: restart jenkins-lts
       become: yes
       command: brew services restart jenkins-lts
+      changed_when: False
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
