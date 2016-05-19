@@ -8,6 +8,8 @@
       homebrew_tap: tap=homebrew/versions state=present
     - name: alternate version of jenkins
       homebrew: name=jenkins-lts state=present
+    - name: tap for brew services command to start jenkins-lts
+      homebrew_tap: tap=homebrew/services state=present
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
