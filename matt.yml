@@ -6,8 +6,7 @@
   tasks:
     - name: tap for alternate version of jenkins
       homebrew_tap: tap=homebrew/versions state=present
-      homebrew_cask: name=jenkins-lts state=present
-
+      homebrew: name=jenkins-lts state=present
     - name: install personal cask applications
       homebrew_cask: name={{item}} state=present
       with_items:
