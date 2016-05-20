@@ -5,8 +5,10 @@
 
   tasks:
     - name: create buildbot user
-# Create a 2048-bit SSH key for user buildbot in ~jsmith/.ssh/id_rsa
-      user: name=buildbot generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa createhome=yes comment="jenkins user" state=present
+# Create a 2048-bit SSH key for user buildbot in ~buildbot/.ssh/id_rsa
+      user: name=buildbot generate_ssh_key=yes ssh_key_bits=2049 ssh_key_file=.ssh/id_rsa createhome=yes groups="sudo" comment="jenkins user" state=present
+      become: yes
+      become_method: sudo
     - name: tap for alternate version of jenkins
       homebrew_tap: tap=homebrew/versions state=present
       become: yes
