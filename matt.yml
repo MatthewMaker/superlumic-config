@@ -20,7 +20,7 @@
     - name: tap for brew services command to start jenkins-lts
       homebrew_tap: tap=homebrew/services state=present
       become: yes
-      become_user: root
+      become_user: buildbot
     - name: restart jenkins-lts
       command: brew services restart jenkins-lts
       become: yes
