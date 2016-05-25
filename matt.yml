@@ -30,7 +30,6 @@
       homebrew_cask: name={{item}} state=present
       with_items:
         - dropbox
-        - google-chrome
         - iterm2-beta
     - name: create ssh directory
       become: yes
@@ -70,7 +69,7 @@
   vars:
     - computername: mm485749385743
     - git_user_name: Pavement Buildbot
-    - git_user_email: matt@pavemnt.com
+    - git_user_email: buildbot@pavemnt.com
     - php_version: 70
     - sublime_packages:
         - dest: "SideBarEnhancements"
